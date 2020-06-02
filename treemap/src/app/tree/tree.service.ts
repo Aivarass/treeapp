@@ -289,7 +289,7 @@ export class TreeService {
         }
       }
     }
-    this.recursiveBfsUpdate(this.bfsArray, 0);
+    this.recursiveBfsUpdate(this.bfsArray.slice(), 0);
     this.running.next(false);
   }
 
@@ -311,9 +311,8 @@ export class TreeService {
 
 
   calculateDfsSum() {
-    this.running.next(true);
-    this.recursiveDfsUpdate(this.binaryArray, 0);
-    this.running.next(false);
+    console.log(this.binaryArray);
+    this.recursiveDfsUpdate(this.binaryArray.slice(), 0);
   }
 
   recursiveDfsUpdate(array: number[],sum: number){
