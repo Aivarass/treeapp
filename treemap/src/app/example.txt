@@ -1,0 +1,48 @@
+  public links: Edge[] = [
+    {
+      id: 'a',
+      source: 'first',
+      target: 'second',
+      label: 'is parent of'
+    }, {
+      id: 'b',
+      source: 'first',
+      target: 'third',
+      label: 'custom label'
+    }
+  ];
+
+  public nodes: Node[] = [
+    {
+      id: 'first',
+      label: 'A'
+    }, {
+      id: 'second',
+      label: 'B'
+    }, {
+      id: 'third',
+      label: 'C'
+    }
+  ]
+
+
+     showLegend = true;
+      orientation = 'LR'; // LR, RL, TB, BT
+      orientations: any[] = [
+          {
+              label: 'Left to Right',
+              value: 'LR'
+          },
+          {
+              label: 'Right to Left',
+              value: 'RL'
+          },
+          {
+              label: 'Top to Bottom',
+              value: 'TB'
+          },
+          {
+              label: 'Bottom to Top',
+              value: 'BT'
+          }
+      ];

@@ -1,0 +1,81 @@
+<div id="container">
+<form  [formGroup]="form">
+  <h3 style="color: dimgrey">Configuration</h3>
+  <div class="form-group">
+    <div class="col-xs-2">
+      <label class="custom-control-label" style="font-size: 14px; color: dimgrey" for="size">Number of nodes</label>
+      <input
+        type="number"
+        class="form-control"
+        id="size"
+        name="size"
+        formControlName="size"
+      >
+    </div>
+    <div class="col-xs-2">
+      <label class="custom-control-label" style="font-size: 14px; color: dimgrey" for="numberArray">Input Array</label>
+      <input
+        type="numberArray"
+        class="form-control"
+        id="numberArray"
+        [(ngModel)]="numbers"
+        value="{{numbers.toString()}}"
+        formControlName="numberArray">
+    </div>
+    <div id="checkbox-control" class="custom-control form-control-lg custom-checkbox">
+      <input  type="checkbox" class="custom-control-input" id="manualInput" (change)="enableArrayEditFunction()">
+      <label  style="font-size: 13px; color: dimgrey; " class="custom-control-label" for="manualInput">Manual Input</label>
+    </div>
+    <div class="col-xs-2">
+    <button [disabled]="running || form.get('size').invalid || form.get('numberArray').invalid" style="width: 200px" class="btn btn-success" (click)="onGenerateTree()">Generate BST</button>
+    </div>
+    <hr>
+    <div class="col-xs-2">
+      <label class="custom-control-label" style="font-size: 14px; color: dimgrey" for="search">Search Node</label>
+      <input
+        type="search"
+        class="form-control"
+        id="search"
+        formControlName="search">
+    </div>
+    <button [disabled]="running || form.get('search').invalid" style="width: 200px" class="btn btn-info"(click)="searchTree()">Search</button>
+    <hr>
+    <div class="col-xs-2">
+      <label class="custom-control-label" style="font-size: 14px; color: dimgrey" for="remove">Remove Node</label>
+      <input
+        type="remove"
+        class="form-control"
+        id="remove"
+        formControlName="remove">
+    </div>
+    <button [disabled]="running || form.get('remove').invalid" style="width: 200px" class="btn btn-info"(click)="removeNode()">Remove</button>
+    <hr>
+    <div class="col-xs-2">
+      <label class="custom-control-label" style="font-size: 14px; color: dimgrey" for="add">Add Node</label>
+      <input
+        type="add"
+        class="form-control"
+        id="add"
+        formControlName="add">
+    </div>
+    <button [disabled]="running || form.get('add').invalid" style="width: 200px" class="btn btn-info"(click)="addNode()">Add</button>
+    <hr>
+    <label class="custom-control-label" style="font-size: 14px; color: dimgrey" for="numberArray">Other Functions</label>
+    <button [disabled]="running" style="width: 200px" class="btn btn-warning"(click)="bfsSum()">BFS Sum</button>
+    <button [disabled]="running" style="width: 200px" class="btn btn-warning"(click)="dfsSum()">DFS Sum</button>
+    <button [disabled]="running" style="width: 200px" class="btn btn-info"(click)="generateUnstructuredTree()">Generate Unstructured</button>
+    <button [disabled]="running" style="width: 200px" class="btn btn-info"(click)="findMin()">Find Minimum</button>
+    <button [disabled]="running" style="width: 200px" class="btn btn-info"(click)="findMax()">Find Maximum</button>
+    <div id="checkbox-control" class="custom-control form-control-lg custom-checkbox">
+      <input  type="checkbox" class="custom-control-input" id="duplicates" (change)="enableDuplicates()">
+      <label  style="font-size: 13px; color: dimgrey; " class="custom-control-label" for="duplicates">Enable duplicates</label>
+    </div>
+  </div>
+  <div>
+  </div>
+</form>
+<!--  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>-->
+<!--  <alert type="success">hello</alert>-->
+</div>
+<!--<button class="btn mat-button-toggle" (click)="changeColor()">Change</button>-->
+<!--  </div>-->

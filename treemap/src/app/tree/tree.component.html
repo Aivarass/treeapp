@@ -1,0 +1,60 @@
+<div id="container">
+<ngx-graph
+  class="chart-container"
+
+  [links]="links"
+  [nodes]="nodes"
+  [layoutSettings]="settings"
+  [layout]="'dagre'"
+  [draggingEnabled]="false"
+  [autoCenter]="false"
+  [curve]="curve"
+  [animate] = true
+  [update$]="update$"
+  [autoZoom]=true
+>
+  <!-- Defs -->
+  <ng-template #defsTemplate>
+    <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto" >
+    </svg:marker>
+    <svg:clipPath id="clipCircle">
+      <circle r="50" cx="50" cy="50" />
+    </svg:clipPath>
+  </ng-template>
+
+  <!--  [orientation]="orientation">-->
+  <ng-template #linkTemplate let-link>
+    <svg:g class="edge">
+      <svg:path class="line" stroke-width="1" marker-end="url(#arrow)"></svg:path>
+      <svg:text class="edge-label" text-anchor="middle">
+        <textPath
+          class="text-path"
+          [attr.href]="'#' + link.id"
+          [style.dominant-baseline]="link.dominantBaseline"
+          startOffset="50%"
+        >
+          {{link.label}}
+        </textPath>
+      </svg:text>
+    </svg:g>
+  </ng-template>
+
+
+  <ng-template #nodeTemplate let-node >
+    <svg:g  class="node">
+      <rect
+        rx="50"
+        ry="50"
+        [attr.width]="node.dimension.width"
+        height="30"[attr.y]="-10"
+        [attr.fill]="node.meta.color"
+        style="stroke-width: 1;
+        box-shadow: darkgray;
+         stroke: rgb(0,0,0);"/>
+      <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.dimension.height / 4">
+        {{node.label}}
+      </svg:text>
+    </svg:g>
+  </ng-template>
+</ngx-graph>
+</div>
